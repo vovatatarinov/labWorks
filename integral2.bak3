@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    printf("\nInput a: ");
+    double a;
+    scanf("%lf", &a);
+    printf("\nInput b: ");
+    double b;
+    scanf("%lf", &b);
+    if (a > b)
+        return 1;
+    printf("\nInput epsilon: ");
+    double eps;
+    scanf("%lf", &eps);
+    if (eps <= 0)
+        return 1;
+    //int counter = 0;
+    int first = 1;
+    int parts = 1;
+    double res = 0;
+    double last_res = 0;
+    double first_res, last;
+    while ((fabs(res - last_res) > eps) || first){
+	parts *= 2;
+	/*
+	if (first == 2)
+            first = 0;
+	    */
+
+	if (!first) {
+	    //first = 0;
+            last_res = res;
+	    res = 0;
+	    first = 0;
+	   
+	}
+        double dx = b - a;
+	dx /= parts;
+	double xi = a;
+        first_res = xi * xi;
+	while(xi < b) {
+            double yi = xi * xi;
+	    res += yi;
+	    xi += dx;
+	
+	};
+	xi += dx;
+       last = xi*xi;
+       res -= first_res;
+       res += ((last+first_res)/2);
+        res *= dx;
+	if (first) {
+	    first = 0;
+            continue;
+	}
+
+    } 
+    printf("\nParts: %d\n"
+           "Result: %lf\n"
+	   "By formula: %lf\n", parts, res, (b*b*b - a*a*a)/3);
+}
