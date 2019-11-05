@@ -1,2 +1,2 @@
 all:
-	gcc solve1_new.c -o solve1_new.elf -g -lm
+	gcc solve3.c -o solve3.elf -g -lm

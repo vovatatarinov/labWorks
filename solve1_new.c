@@ -2,14 +2,15 @@
 #include <math.h>
 
 void main() {
-	int n;
-	double epsilon;
-	printf("Input epsilon> ");
-	scanf("%lf", &epsilon);
+    int n;
+    double epsilon;
+    printf("Input epsilon> ");
+    scanf("%lf", &epsilon);
     printf("Input n> ");
-	scanf("%d", &n);
+    scanf("%d", &n);
     double a, b, c;
     for (int i = 0; i < n; ++i) {
+        /* Workaround break points */
         a = -M_PI/2 + M_PI*i;
         b = +M_PI/2 + M_PI*i;
         a = (a+b)/2;
