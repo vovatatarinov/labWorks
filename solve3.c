@@ -12,8 +12,12 @@ int main() {
     while (fabs(b - a) > epsilon) {
         double fa = a*a - 4;
         double fb = b*b - 4;
+	if (fb == fa)
+            fb -= epsilon;
         a = b - (b - a) * fb / (fb - fa);
         fa = a*a - 4;
+	if (fa == fb)
+            fa -= epsilon;
         b = a + (a - b) * fa / (fa - fb);
 
     }

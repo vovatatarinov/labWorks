@@ -25,6 +25,6 @@ void main() {
             else
                 a = c;
         }
-        printf("Solution found! %lf\n", (a+b)/2);
+        printf("Solution found! %lf   %lf\n", (a+b)/2, tan((a+b)/2) - (a+b)/2);
     }
 }
