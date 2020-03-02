@@ -1,0 +1,2 @@
+plot "plot.dat" using 1:2:3:4 with vectors filled head lw 3
+
