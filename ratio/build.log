@@ -1,0 +1,201 @@
+g++ ratio.cpp -o ratio -g -lm
+ratio.cpp:22:6: error: reference to ‘ratio’ is ambiguous
+ void ratio::set(int n, int d) {
+      ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp: In function ‘void set(int, int)’:
+ratio.cpp:23:5: error: ‘num’ was not declared in this scope
+     num = n;
+     ^~~
+ratio.cpp:23:5: note: suggested alternative: ‘enum’
+     num = n;
+     ^~~
+     enum
+ratio.cpp:24:5: error: ‘den’ was not declared in this scope
+     den = d;
+     ^~~
+ratio.cpp:25:5: error: ‘reduce’ was not declared in this scope
+     reduce();
+     ^~~~~~
+ratio.cpp:25:5: note: suggested alternative: ‘rename’
+     reduce();
+     ^~~~~~
+     rename
+ratio.cpp: At global scope:
+ratio.cpp:28:1: error: reference to ‘ratio’ is ambiguous
+ ratio::ratio() {
+ ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp:32:1: error: reference to ‘ratio’ is ambiguous
+ ratio::ratio(int n, int d) {
+ ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp:36:6: error: reference to ‘ratio’ is ambiguous
+ void ratio::show() {
+      ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp: In function ‘void show()’:
+ratio.cpp:37:21: error: ‘n’ was not declared in this scope
+     cout << endl << n << endl << "###" << endl << d << endl;
+                     ^
+ratio.cpp:37:21: note: suggested alternative: ‘yn’
+     cout << endl << n << endl << "###" << endl << d << endl;
+                     ^
+                     yn
+ratio.cpp:37:51: error: ‘d’ was not declared in this scope
+     cout << endl << n << endl << "###" << endl << d << endl;
+                                                   ^
+ratio.cpp: At global scope:
+ratio.cpp:40:5: error: reference to ‘ratio’ is ambiguous
+ int ratio::gcd (int a, int b) {
+     ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp:44:5: error: reference to ‘ratio’ is ambiguous
+ int ratio::lcm (int a, int b) {
+     ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp:48:6: error: reference to ‘ratio’ is ambiguous
+ void ratio::reduce() {
+      ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp: In function ‘void reduce()’:
+ratio.cpp:49:19: error: ‘num’ was not declared in this scope
+     int buf = gcd(num,den);
+                   ^~~
+ratio.cpp:49:19: note: suggested alternative: ‘enum’
+     int buf = gcd(num,den);
+                   ^~~
+                   enum
+ratio.cpp:49:23: error: ‘den’ was not declared in this scope
+     int buf = gcd(num,den);
+                       ^~~
+ratio.cpp: At global scope:
+ratio.cpp:54:1: error: reference to ‘ratio’ is ambiguous
+ ratio ratio::operator*(ratio r) {
+ ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp:58:1: error: reference to ‘ratio’ is ambiguous
+ ratio ratio::operator+(ratio r) {
+ ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp:64:1: error: reference to ‘ratio’ is ambiguous
+ ratio ratio::operator*(int k) {
+ ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp:68:1: error: reference to ‘ratio’ is ambiguous
+ ratio operator*(int k, ratio r) {
+ ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp: In function ‘int main()’:
+ratio.cpp:73:5: error: reference to ‘ratio’ is ambiguous
+     ratio r1(2,3), r2(3,4);
+     ^~~~~
+ratio.cpp:5:7: note: candidates are: class ratio
+ class ratio
+       ^~~~~
+In file included from /usr/include/c++/7/chrono:38:0,
+                 from /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h:101,
+                 from ratio.cpp:1:
+/usr/include/c++/7/ratio:263:12: note:                 template<long int _Num, long int _Den> struct std::ratio
+     struct ratio
+            ^~~~~
+ratio.cpp:74:5: error: ‘r1’ was not declared in this scope
+     r1 = r1 * r2;
+     ^~
+ratio.cpp:74:5: note: suggested alternative: ‘y1’
+     r1 = r1 * r2;
+     ^~
+     y1
+ratio.cpp:74:15: error: ‘r2’ was not declared in this scope
+     r1 = r1 * r2;
+               ^~
+Makefile:2: recipe for target 'all' failed
+make: *** [all] Error 1

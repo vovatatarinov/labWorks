@@ -1,0 +1,150 @@
+\documentclass[14pt, b4paper]{article}
+\usepackage{cmap}
+\usepackage{fontspec}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+
+\graphicspath{./images/}
+
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic} 
+\setmainfont[Ligatures={TeX,Historic}]{Times New Roman}
+\setmonofont[Ligatures={TeX,Historic}]{Times New Roman}
+
+
+\usepackage{geometry} % Меняем поля страницы
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+\begin{document}
+	\title{Листинг программы по теме "Классы"}
+	\author{Владимир Татаринов}
+	\date{\today}
+	\maketitle
+	\lstset{ %
+		language=C++,                % Язык программирования 
+		numbers=left,                   % С какой стороны нумеровать
+		numberstyle=\color{gray},     % Стиль который будет использоваться для нумерации строк
+		stepnumber=1,                   % Шаг между линиями. Если 1, то будет пронумерована каждая строка 
+		numbersep=5pt,                  
+		backgroundcolor=\color{white},      % Цвет подложки. Вы должны добавить пакет color - usepackage{color}
+		showspaces=false,               
+		showstringspaces=false,         
+		showtabs=false,                
+		frame=single,                    % Добавить рамку
+		rulecolor=\color{black},        
+		tabsize=2,                       % Tab - 2 пробела
+		breaklines=true,                 % Автоматический перенос строк
+		breakatwhitespace=true,          % Переносить строки по словам
+		title=Программа на C++,                   % Показать название подгружаемого файла
+		keywordstyle=\color{blue},          % Стиль ключевых слов
+		commentstyle=\color{dkgreen},       % Стиль комментариев
+		stringstyle=\color{mauve}          % Стиль литералов
+	}
+	
+	\begin{lstlisting}
+		#include <iostream>
+		
+		using namespace std;
+		
+		class ratio
+		{
+			private:
+				int num, den;
+				void reduce();
+				int gcd(int n, int m);
+				int lcm(int a, int b);
+			public:
+				ratio();
+				ratio(int n, int d);
+				void set(int, int);
+				void show();
+				ratio operator*(ratio);
+				ratio operator+(ratio);
+				ratio operator*(int);
+				friend ratio operator*(int, ratio);
+		};
+		
+		void ratio::set(int n, int d) {
+			num = n;
+			den = d;
+			reduce();
+		}
+		
+		ratio::ratio() {
+			set(1,1);
+		}
+		
+		ratio::ratio(int n, int d) {
+			set(n, d);
+		}
+		
+		void ratio::show() {
+			if (num < 0)
+				cout << endl << "  "<< -num << endl << "- ###" << endl << "  " << den << endl;
+			else
+				cout << endl << num << endl << "###" << endl << den << endl;
+		}
+		
+		int ratio::gcd (int a, int b) {
+			return b ? gcd (b, a % b) : a;
+		}
+		
+		int ratio::lcm (int a, int b) {
+			return a / gcd (a, b) * b;
+		}
+		
+		void ratio::reduce() {
+			int buf = abs(gcd(num,den));
+			num /= buf;
+			den /= buf;
+			if (den < 0) {
+				num *= (-1);
+				den *= (-1);
+			}
+		}
+		
+		ratio ratio::operator*(ratio r) {
+			return ratio(num * r.num, den * r.den);
+		}
+		
+		ratio ratio::operator+(ratio r) {
+			int b = lcm(r.den, den);
+			int a = num * b / den + r.num * b / r.den;
+			return ratio(a,b);
+		}
+		
+		ratio ratio::operator*(int k) {
+			return ratio(k * num, den);
+		}
+		
+		ratio operator*(int k, ratio r) {
+			return r*k;
+		}
+		
+		int main() {
+			ratio r1(2,-3), r2(3,4);
+			r1 = r1 * r2;
+			r1.show();
+			r1.set(1,-6);
+			r2.set(-3,14);
+			r1 = r1 + r2;
+			r1.show();
+			r1 = 6 * r1;
+			r1.show();
+			r2 = r2 * 3;
+			r2.show();
+		}
+	\end{lstlisting}
+\end{document}
