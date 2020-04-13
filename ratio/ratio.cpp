@@ -1,24 +1,43 @@
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
 class ratio
 {
-private:
-int num, den;
-void reduce();
-int gcd(int n, int m);
-int lcm(int a, int b);
-public:
-ratio();
-ratio(int n, int d);
-void set(int, int);
-void show();
-ratio operator*(ratio);
-ratio operator+(ratio);
-ratio operator*(int);
-friend ratio operator*(int, ratio);
+    private:
+        int num, den;
+        void reduce();
+        //int numOfDig(int n);
+        int gcd(int n, int m);
+        int lcm(int a, int b);
+    public:
+        ratio();
+        ratio(int n, int d);
+        void set(int, int);
+        void show();
+        ratio operator*(ratio);
+        ratio operator+(ratio);
+        ratio operator*(int);
+        friend ratio operator*(int, ratio);
 };
+
+inline int max(int n1, int n2) {
+    if (n1 > n2)
+        return n1;
+    return n2;
+}
+
+int numOfDig(int n) {
+    if (n < 0)
+        n = (-n);
+    int r = 0;
+    while (n > 0) {
+        n /= 10;
+        ++r;
+    }
+    return r;
+}
 
 void ratio::set(int n, int d) {
     num = n;
@@ -33,12 +52,45 @@ ratio::ratio() {
 ratio::ratio(int n, int d) {
     set(n, d);
 }
+/*
+void ratio::show() {
+    int num2 = num;
+    int n = max(numOfDig(num), numOfDig(den));
+    string s = "";
+    if (num < 0) {
+        s += "- ";
+        num2 = (-num2);
+    }
+    for (int i = 0; i < n; ++i)
+        s += "#";
+    cout << endl << num2 << endl << s << endl << den << endl;
+}
+*/
 
 void ratio::show() {
-    if (num < 0)
-        cout << endl << "  "<< -num << endl << "- ###" << endl << "  " << den << endl;
-    else
-        cout << endl << num << endl << "###" << endl << den << endl;
+    int num2 = num;
+    int den2 = den;
+    int dignum = numOfDig(num2);
+    int dennum = numOfDig(den2);
+    int n = max(dignum, dennum);
+    stringstream s1 , s2 , s3;
+    if (num < 0) {
+        num2 = (-num2);
+        s2 << "- ";
+        s1 << "  ";
+        s3 << "  ";
+    }
+    int n1 = (n - dignum) / 2;
+    for (int i = 0; i < n1; ++i)
+        s1 << " ";
+    n1 = (n - dennum) / 2;
+    for (int i = 0; i < n1; ++i)
+        s3 << " ";
+    for (int i = 0; i < n; ++i)
+        s2 << "#";
+    s1 << num2;
+    s3 << den;
+    cout << endl << s1.str() << endl << s2.str() << endl << s3.str() << endl;
 }
 
 int ratio::gcd (int a, int b) {
@@ -78,7 +130,7 @@ ratio operator*(int k, ratio r) {
 }
 
 int main() {
-    ratio r1(2,-3), r2(3,4);
+    ratio r1(234511,32), r2(3,1);
     r1 = r1 * r2;
     r1.show();
     r1.set(1,-6);
